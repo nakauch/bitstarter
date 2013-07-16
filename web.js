@@ -4,12 +4,16 @@ var buf = require('buffer');
 var dataG;
 var app = express.createServer(express.logger());
 
-fs.readFile('index.html', function (err, data) {
-    if (err) throw err;
-    dataG = buf.toString(data);
-});
+//fs.readFile('index.html', function (err, data) {
+//    if (err) throw err;
+//    dataG = buf.toString(data);
+//});
 
 app.get('/', function(request, response) {
+    fs.readFile('index.html', function (err, data) {
+	if (err) throw err;
+	dataG = buf.toString(data);
+    }); 
     response.send(dataG);
 });
 
