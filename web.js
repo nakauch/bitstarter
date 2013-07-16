@@ -9,7 +9,7 @@ fs.readFile('index.html', function (err, data) {
 });
 
 app.get('/', function(request, response) {
-    response.send(buf.toString(dataG));
+    response.send(toString(dataG));
 });
 
 var port = process.env.PORT || 5000;
