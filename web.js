@@ -3,13 +3,11 @@ var fs = require('fs');
 var dataG;
 var app = express.createServer(express.logger());
 
-fs.readFile('index.html', function (err, data) {
-    if (err) throw err;
-    dataG = data;
-});
-
 app.get('/', function(request, response) {
-    response.send(toString(dataG));
+    response.send(toString(fs.readFile('index.html', function (err, data) {
+	if (err) throw err;
+	dataG = data;
+    });));
 });
 
 var port = process.env.PORT || 5000;
